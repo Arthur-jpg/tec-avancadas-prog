@@ -1,4 +1,6 @@
-public class Main {
+package controle;
+
+public class Programa {
     public static void main(String[] args) {
         modelo.Professor thiago = new modelo.Professor("Thiago", "123456789", "Mestrado");
         modelo.Aluno arthur = new modelo.Aluno("Arthur", "31999614643", "202402851756");

@@ -14,10 +14,14 @@ public class Programa {
         di.addCurso(curso);
         di.addTurma(turma);
 
+
+
         // Imprime somente o nome das disciplinas do curso engenharia de software
         System.out.println("Disciplinas do curso " + curso.getNome() + ":");
         for (Disciplina disciplina : curso.getDisciplinas()) {
             System.out.println(disciplina.getNome());
         }
+
+        // listar o código de todas as turmas de engenharia de software
     }
 }

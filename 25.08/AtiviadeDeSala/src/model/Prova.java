@@ -12,6 +12,6 @@ public class Prova implements Avaliacao{
 
     @Override
     public double calcularNotaFinal() {
-        return 0;
+        return acertos/total * 10;
     }
 }

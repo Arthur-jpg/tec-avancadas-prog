@@ -8,6 +8,7 @@ public class Aluno extends Pessoa{
     private String documento;
     private String matricula;
     private Set<Turma> turma = new HashSet<>();
+    private Set<Avaliacao> avaliacao = new HashSet<>();
 
     public Aluno( String documento, String matricula) {
         super(null, null);
@@ -18,5 +19,11 @@ public class Aluno extends Pessoa{
     @Override
     public String identificacao() {
         return matricula;
+    }
+
+
+    // como passar uma interface
+    public void addAvaliacao(Avaliacao p) {
+        this.prova.add(p);
     }
 }

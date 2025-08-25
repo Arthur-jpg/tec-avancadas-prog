@@ -24,7 +24,7 @@ public class Programa {
         a.addSetDeB(b1);
 
 
-        // Bidirecionalidade -> amarrei C em b1 lá em cima agora aqui em baixo amarrei B1 em C1 
+        // Bidirecionalidade -> amarrei C em b1 lá em cima agora aqui em baixo amarrei B1 em C1
         b1.addC(c1);
         b1.addC(c2);
 

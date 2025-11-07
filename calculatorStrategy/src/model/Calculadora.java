@@ -15,7 +15,6 @@ public class Calculadora {
 
     public double calcular(String operador, double a, double b) {
         Operacao op = operacoes.get(operador);
-        if (op == null) throw new IllegalArgumentException("Operação inválida");
         return op.executar(a, b);
     }
 }

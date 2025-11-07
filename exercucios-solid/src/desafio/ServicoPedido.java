@@ -1,8 +1,8 @@
 package desafio;
 
 public class ServicoPedido {
-    private RepositorioPedido repositorioPedido;
-    private NotificadorCliente notificador;
+    private final RepositorioPedido repositorioPedido;
+    private final NotificadorCliente notificador;
 
     public ServicoPedido(RepositorioPedido repositorioPedido, NotificadorCliente notificador) {
         this.repositorioPedido = repositorioPedido;
@@ -10,16 +10,12 @@ public class ServicoPedido {
     }
 
     public Pedido criarPedido(Cliente cliente) {
-        String idPedido = "PED-" + System.currentTimeMillis();
-        Pedido pedido = new Pedido(idPedido, cliente);
-        return pedido;
+        return new Pedido("PED-" + System.currentTimeMillis(), cliente);
     }
 
     public void finalizarPedido(Pedido pedido) {
         repositorioPedido.salvar(pedido);
-        notificador.enviarNotificacao(
-            pedido.getCliente().getEmail(),
-            "Pedido " + pedido.getId() + " foi criado com sucesso!"
-        );
+        notificador.enviarNotificacao(pedido.getCliente().getEmail(),
+            "Pedido " + pedido.getId() + " foi criado com sucesso!");
     }
 }

@@ -1,16 +1,15 @@
 package desafio;
 
 public class PagamentoCartaoCredito implements MetodoPagamento {
-    private String numeroCartao;
+    private final String numeroCartao;
 
     public PagamentoCartaoCredito(String numeroCartao) {
         this.numeroCartao = numeroCartao;
     }
 
     public boolean processar(double valor) {
-        System.out.println("Processando pagamento de R$ " + String.format("%.2f", valor) + 
-                         " no cartão de crédito **** " + numeroCartao.substring(numeroCartao.length() - 4));
-        System.out.println("Pagamento aprovado!");
+        System.out.printf("Processando pagamento de R$ %.2f no cartão de crédito **** %s%nPagamento aprovado!%n", 
+                         valor, numeroCartao.substring(numeroCartao.length() - 4));
         return true;
     }
 

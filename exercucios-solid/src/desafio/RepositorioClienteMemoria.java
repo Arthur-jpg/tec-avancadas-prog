@@ -1,17 +1,7 @@
 package desafio;
 
-import java.util.HashMap;
-import java.util.Map;
-
-public class RepositorioClienteMemoria implements RepositorioCliente {
-    private Map<String, Cliente> clientes = new HashMap<>();
-
+public class RepositorioClienteMemoria extends RepositorioMemoria<Cliente, String> implements RepositorioCliente {
     public void salvar(Cliente cliente) {
-        clientes.put(cliente.getId(), cliente);
-        System.out.println("Cliente " + cliente.getNome() + " salvo no repositório.");
-    }
-
-    public Cliente buscarPorId(String id) {
-        return clientes.get(id);
+        salvar(cliente.getId(), cliente, "Cliente " + cliente.getNome());
     }
 }

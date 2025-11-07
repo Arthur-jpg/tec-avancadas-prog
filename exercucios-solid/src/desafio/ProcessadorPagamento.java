@@ -1,7 +1,7 @@
 package desafio;
 
 public class ProcessadorPagamento {
-    private NotificadorCliente notificador;
+    private final NotificadorCliente notificador;
 
     public ProcessadorPagamento(NotificadorCliente notificador) {
         this.notificador = notificador;
@@ -11,21 +11,19 @@ public class ProcessadorPagamento {
         double valorOriginal = pedido.calcularTotal();
         double valorComDesconto = calculadora.aplicarDesconto(valorOriginal);
         
-        System.out.println("\n💰 Processando Pagamento do Pedido: " + pedido.getId());
-        System.out.println("Valor original: R$ " + String.format("%.2f", valorOriginal));
-        System.out.println(calculadora.getDescricao());
-        System.out.println("Valor final: R$ " + String.format("%.2f", valorComDesconto));
-        System.out.println("Método: " + metodoPagamento.getNome());
-        System.out.println("---");
+        System.out.printf("%nProcessando Pagamento do Pedido: %s%n" +
+                         "Valor original: R$ %.2f%n%s%nValor final: R$ %.2f%n" +
+                         "Método: %s%n---%n",
+                         pedido.getId(), valorOriginal, calculadora.getDescricao(), 
+                         valorComDesconto, metodoPagamento.getNome());
         
         boolean sucesso = metodoPagamento.processar(valorComDesconto);
         
         if (sucesso) {
             pedido.setStatus(StatusPedido.PAGO);
-            notificador.enviarNotificacao(
-                pedido.getCliente().getEmail(),
-                "Pagamento do pedido " + pedido.getId() + " confirmado! Valor: R$ " + String.format("%.2f", valorComDesconto)
-            );
+            notificador.enviarNotificacao(pedido.getCliente().getEmail(),
+                String.format("Pagamento do pedido %s confirmado! Valor: R$ %.2f", 
+                            pedido.getId(), valorComDesconto));
         }
         
         return sucesso;
